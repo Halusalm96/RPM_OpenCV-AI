@@ -1,2 +1,1 @@
-play\runs\detect\train\weights 학습된 데이터 파일 - best.pt, last.pt
-
+6.11 16:00 jinwoong
