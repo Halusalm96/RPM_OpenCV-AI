@@ -1,0 +1,5 @@
+
+train: /home/user1/Downloads/RPM_OpenCV-AI/play/train
+val: /home/user1/Downloads/RPM_OpenCV-AI/play/val
+nc: 4
+names: [viking, 'roller', 'wheel', 'round']

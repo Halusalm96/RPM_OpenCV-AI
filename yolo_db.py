@@ -66,7 +66,9 @@ if __name__ == "__main__":
         detect_and_save(frame)
 
         # 화면에 결과 표시 (선택 사항)
-        cv2.imshow('YOLOv8 Detection', frame)
+        for i in range(1, 100):
+            cv2.imshow('YOLOv8 Detection', frame)
+        
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break

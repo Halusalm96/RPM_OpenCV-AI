@@ -4,6 +4,6 @@ names:
 - round
 - wheel
 nc: 4
-test: /Users/503/play/test/images/
-train: /Users/503/play/train/images/
-val: /Users/503/play/val/images/
+test: /home/user1/Downloads/RPM_OpenCV-AI/play/test/images/
+train: /home/user1/Downloads/RPM_OpenCV-AI/play/train/images/
+val: /home/user1/Downloads/RPM_OpenCV-AI/play/val/images/

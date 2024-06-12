@@ -3,7 +3,7 @@ from ultralytics import YOLO
 
 def run_webcam():
     # 학습된 모델을 로드합니다
-    model = YOLO('/Users/503/play/runs/detect/train/weights/last.pt')  # 학습된 모델 파일의 경로를 지정합니다
+    model = YOLO('/home/user1/Downloads/RPM_OpenCV-AI/yolov8_custom_trained.pt')  # 학습된 모델 파일의 경로를 지정합니다
     
     # 웹캠 연결 (0은 기본 카메라를 의미합니다)
     cap = cv2.VideoCapture(0)

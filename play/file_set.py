@@ -16,7 +16,7 @@ else:
 # 모델을 GPU로 이동
 model.to(device)
 
-model.train(data='/Users/503/play/PLAY.yaml',epochs=15, patience=10, batch=32, imgsz=416)
+model.train(data='/home/user1/Downloads/RPM_OpenCV-AI/play/PLAY.yaml',epochs=15, patience=10, batch=32, imgsz=416)
 
 # 데이터셋 로드
 # dataset = model.load_data(data='/Users/503/play/PLAY.yaml',epochs=15, patience=10, batch=32, imgsz=416)
