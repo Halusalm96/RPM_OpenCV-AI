@@ -1,5 +1,8 @@
 # 필요한 라이브러리 임포트
 from ultralytics import YOLO
+import torch
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # 사전 학습된 YOLO v8 모델 로드
 model = YOLO('yolov8n.pt')  # 'yolov8n.pt'는 사전 학습된 모델 파일 경로입니다.

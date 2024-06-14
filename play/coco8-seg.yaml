@@ -1,9 +1,5 @@
-names:
-- roller
-- king
-- round
-- wheel
+
+train: /home/user1/Downloads/RPM_OpenCV-AI/play/train
+val: /home/user1/Downloads/RPM_OpenCV-AI/play/val
 nc: 4
-test: /home/user1/Downloads/RPM_OpenCV-AI/play/test/images/
-train: /home/user1/Downloads/RPM_OpenCV-AI/play/train/images/
-val: /home/user1/Downloads/RPM_OpenCV-AI/play/val/images/
+names: [viking, 'roller', 'wheel', 'round']

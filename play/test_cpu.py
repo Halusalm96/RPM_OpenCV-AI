@@ -3,8 +3,9 @@ from ultralytics import YOLO
 
 def run_webcam():
     try:
-        # 학습된 모델을 로드합니다
-        model = YOLO('/home/user1/Downloads/RPM_OpenCV-AI/yolov8_custom_trained.pt')  # 학습된 모델 파일의 경로를 지정합니다
+        # 학습된 모델을 로드합니다 (CPU 모드로)
+        model = YOLO('/home/user1/Downloads/RPM_OpenCV-AI/yolov8_custom_trained.pt')
+        model.to('cpu')  # 모델을 CPU로 이동
         print("모델이 성공적으로 로드되었습니다.")
     except Exception as e:
         print(f"모델 로드 중 오류가 발생했습니다: {e}")
@@ -26,9 +27,9 @@ def run_webcam():
             break
 
         try:
-            # YOLO 모델을 사용하여 프레임을 처리합니다
+            # YOLO 모델을 사용하여 프레임을 처리합니다 (CPU 모드)
             results = model(frame)
-
+            
             # 결과를 프레임에 그립니다
             annotated_frame = results[0].plot()  # plot()은 주석이 달린 프레임을 반환합니다
         except Exception as e:
