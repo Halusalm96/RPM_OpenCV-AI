@@ -5,3 +5,6 @@
 2024.6.11 16:00 jinwoong
 yolo_db.py로 DB에 데이터 보냄
 >>>>>>> 766520d065d1f8b0a722e031dc3316badfa1b802
+
+2024.6.14 10:50 jinwoong yolo_db_upgrade2.py로 영상 측정 시간을 늘려 부하를 줄임
+2024.6.14 10:50 jinwoong yolo_db_upgrade2_time_check.py를 통해 함수 호출 시간과 대기시간을 통해 대략적인 프로그램 순환 시간 파악 가능
