@@ -15,3 +15,4 @@ yolo_db.py로 DB에 데이터 보냄
 
 pc_db와 pi_pc에 각각 연결하는 프로그램을 넣음
 2024.6.17 12.00 jinwoong pi에서 부하를 줄이는 작업 완료(이미지 축소, 흑백영상으로 변환, sleep시간)
+sender.py가 송신, receiver.py가 수신용 파이썬 프로그램(improved는 앞의 것에도 부하가 심할 때 사용)
