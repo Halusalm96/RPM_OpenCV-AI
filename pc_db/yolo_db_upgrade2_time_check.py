@@ -34,11 +34,19 @@ def save_detection_to_db(detections):
 
 def detect_and_save(frame):
     # OpenCV 이미지를 PIL 이미지로 변환
-    pil_img = PILImage.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+    # pil_img = PILImage.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+
+    # 영상 크기 줄이기
+    frame = cv2.resize(frame, (320, 240))
+            
+    # 흑백으로 변환
+    gray_frame = PILImage.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY))
 
     # YOLOv8 모델로 객체 탐지 수행
     start_inference_time = time.time()
-    results = model(pil_img)
+
+    results = model(gray_frame)
+    # results = model(pil_img)
     end_inference_time = time.time()
 
     # 결과를 처리하고 필요한 정보를 추출
@@ -78,11 +86,11 @@ if __name__ == "__main__":
 
         frame_count += 1
 
-        key = cv2.waitKey(wait_key_time) & 0xFF
+        # key = cv2.waitKey(wait_key_time) & 0xFF
         loop_end_time = time.time()  # 루프 종료 시간 측정
 
-        if key == ord('q'):
-            break
+        # if key == ord('q'):
+        #     break
 
         loop_time = loop_end_time - loop_start_time
         total_time = loop_time + (wait_key_time / 1000.0)
