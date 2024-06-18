@@ -9,16 +9,10 @@ model = YOLO('yolov8n.pt')
 model.to('cpu')
 
 # 데이터베이스 연결 설정
-# db = pymysql.connect(
-#     host="localhost",
-#     user="new_user",  
-#     password="new_password",  
-#     database="yolo_db2"
-# )
 db = pymysql.connect(
     host="13.124.83.151",
-    user="root",  
-    password="1235",  
+    user="root",
+    password="1235",
     database="rpm"
 )
 
@@ -27,12 +21,13 @@ def save_to_database(detected_objects):
     for obj in detected_objects:
         class_name = obj['name']
         confidence = obj['confidence']
-        # x, y, w, h = obj['box']
 
         # SQL 쿼리 작성 및 실행
-        # sql = "INSERT INTO detections (class_name, confidence, x, y, width, height) VALUES (%s, %s, %s, %s, %s, %s)"
-        # cursor.execute(sql, (class_name, confidence, x, y, w, h))
-        sql = "INSERT INTO detections (class_name, confidence) VALUES (%s, %s)"
+        sql = """
+        INSERT INTO detections (class_name, confidence)
+        VALUES (%s, %s)
+        ON DUPLICATE KEY UPDATE confidence = VALUES(confidence)
+        """
         cursor.execute(sql, (class_name, confidence))
 
     db.commit()
@@ -61,20 +56,22 @@ def main():
             for result in results:
                 boxes = result.boxes
                 for box in boxes:
-                    detected_objects.append({
-                        'name': result.names[int(box.cls)],
-                        'confidence': float(box.conf)   #,
-                        # 'box': [int(box.xyxy[0][0]), int(box.xyxy[0][1]), int(box.xyxy[0][2]-box.xyxy[0][0]), int(box.xyxy[0][3]-box.xyxy[0][1])]
-                    })
+                    confidence = float(box.conf)
+                    if confidence >= 0.5:  # 정확도가 50% 이상인 경우에만 추가
+                        detected_objects.append({
+                            'name': result.names[int(box.cls)],
+                            'confidence': confidence
+                            # 'box': [int(box.xyxy[0]), int(box.xyxy[1]), int(box.xyxy[2]-box.xyxy[0]), int(box.xyxy[3]-box.xyxy[1])]
+                        })
             
             # 데이터베이스에 저장
             save_to_database(detected_objects)
             
-            # # 탐지 결과 표시 (옵션)
-            # for obj in detected_objects:
-            #     x, y, w, h = obj['box']
-            #     cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
-            #     cv2.putText(frame, f"{obj['name']} {obj['confidence']:.2f}", (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
+            # 탐지 결과 표시 (옵션)
+            for obj in detected_objects:
+                # x, y, w, h = [int(val) for val in obj['box']]
+                # cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
+                cv2.putText(frame, f"{obj['name']} {obj['confidence']:.2f}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
             
             # 영상 표시
             cv2.imshow('YOLO Detection', frame)
