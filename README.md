@@ -10,5 +10,5 @@
 
 pc_db와 pi_pc에 각각 연결하는 프로그램을 넣음 2024.6.17 12.00 jinwoong pi에서 부하를 줄이는 작업 완료(이미지 축소, 흑백영상으로 변환, sleep시간) sender.py가 송신, receiver.py가 수신용 파이썬 프로그램(improved는 앞의 것에도 부하가 심할 때 사용)
 
-2024.6.18 14:20 jinwoong receiver_pc_db_upgrade2.py를 통해 Pi에서 영상을 받아오지 못하는 부분 수정(sleep시간을 최소로 두어야 효율이 좋음)
-2024.6.18 14:20 jinwoong receiver_pc_db_upgrade3.py를 통해 DB에 한 행씩만 업데이트
+2024.6.18 16:20 jinwoong receiver_pc_db_upgrade2.py를 통해 Pi에서 영상을 받아오지 못하는 부분 수정(sleep시간을 최소로 두어야 효율이 좋음)
+2024.6.18 18:00 jinwoong receiver_pc_db_upgrade3.py를 통해 DB에 한 행씩만 업데이트

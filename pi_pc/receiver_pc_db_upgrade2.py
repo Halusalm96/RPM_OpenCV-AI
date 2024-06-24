@@ -10,10 +10,14 @@ model.to('cpu')
 
 # 데이터베이스 연결 설정
 db = pymysql.connect(
-    host="13.124.83.151",
-    user="root",
-    password="1235",
-    database="rpm"
+    # host="13.124.83.151",
+    # user="root",
+    # password="1235",
+    # database="rpm"
+    host="localhost",
+    user="new_user",  
+    password="new_password",  
+    database="yolo_db2"
 )
 
 def save_to_database(detected_objects):
