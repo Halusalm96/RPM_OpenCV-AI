@@ -6,7 +6,11 @@ from ultralytics import YOLO
 # YOLOv8 모델 로드
 model = YOLO('yolov8n.pt')
 
+<<<<<<< HEAD
 model.train(data='/Users/503/play/coco8.yaml',epochs=50, patience=10, batch=32, imgsz=416)
+=======
+model.train(data='/Users/503/play/coco8.yaml',epochs=10, patience=10, batch=32, imgsz=416)
+>>>>>>> 43878fec4db21e3ca4205da0698cce3b7e2df886
 
 # 데이터셋 로드
 # dataset = model.load_data(data='/Users/503/play/PLAY.yaml',epochs=15, patience=10, batch=32, imgsz=416)
